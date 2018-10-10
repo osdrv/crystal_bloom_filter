@@ -1,0 +1,9 @@
+name: bloom_filter
+version: 0.1.0
+
+authors:
+  - icanhazbroccoli <me@4pcbr.com>
+
+crystal: 0.26.1
+
+license: MIT
