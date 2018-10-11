@@ -3,6 +3,9 @@
 require "./my_digest"
 
 class BloomFilter
+
+  alias ByteArray = Slice(UInt8)
+
   @bitset : Array(Bool)
   @k : UInt32
   @n : UInt32
@@ -12,19 +15,19 @@ class BloomFilter
   def initialize(size : UInt32)
     @bitset, @k, @n, @m = Array(Bool).new, 0_u32, 0_u32, 0_u32
     @hashes = [
-      ->MyDigest.fnv1_64(Slice(UInt8)),
-      ->MyDigest.fnv1a_64(Slice(UInt8)),
-      ->MyDigest.murmur3(Slice(UInt8)),
+      ->MyDigest.fnv1_64(ByteArray),
+      ->MyDigest.fnv1a_64(ByteArray),
+      ->MyDigest.murmur3_64(ByteArray),
     ]
   end
 
-  def add(el : Slice(UInt8))
+  def add(el : ByteArray)
     puts el
     #TODO
     return
   end
 
-  def test(el : Slice(UInt8))
+  def test(el : ByteArray)
     #TODO
     return false
   end
